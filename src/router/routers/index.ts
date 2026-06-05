@@ -7,18 +7,21 @@ const moduleRouteFiles = import.meta.glob<{ default: AppRouteRecordRaw | AppRout
   { eager: true },
 )
 
-const moduleRoutes = Object.values(moduleRouteFiles).flatMap((mod) => {
+export const moduleRoutes = Object.values(moduleRouteFiles).flatMap((mod) => {
   const routeOrRoutes = mod.default
   return Array.isArray(routeOrRoutes) ? routeOrRoutes : [routeOrRoutes]
 })
 
-export const ROOT_REDIRECT = '/test'
+export const ROOT_REDIRECT = '/test/overview'
+
+const layoutRoute: AppRouteRecordRaw = {
+  path: '/',
+  component: () => import('@/layout/app-layout.vue'),
+  redirect: ROOT_REDIRECT,
+  children: moduleRoutes,
+}
 
 export const routes: AppRouteRecordRaw[] = [
-  {
-    path: '/',
-    redirect: ROOT_REDIRECT,
-  },
-  ...moduleRoutes,
+  layoutRoute,
   ...otherRoutes,
 ]

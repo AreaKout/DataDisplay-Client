@@ -8,6 +8,7 @@ const otherRoutes: AppRouteRecordRaw[] = [
 		meta: {
 			title: '登录',
 			guestOnly: true,
+			hiddenMenu: true,
 		},
 	},
 	{
@@ -16,6 +17,7 @@ const otherRoutes: AppRouteRecordRaw[] = [
 		component: () => import('@/views/not-found/index.vue'),
 		meta: {
 			title: '页面不存在',
+			hiddenMenu: true,
 		},
 	},
 	{

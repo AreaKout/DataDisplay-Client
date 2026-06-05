@@ -7,7 +7,12 @@ function decodeJwtPayload(token: string): { exp?: number } | null {
   }
 
   try {
-    const base64 = tokenParts[1].replace(/-/g, '+').replace(/_/g, '/')
+    const payloadPart = tokenParts[1]
+    if (!payloadPart) {
+      return null
+    }
+
+    const base64 = payloadPart.replace(/-/g, '+').replace(/_/g, '/')
     const padLength = 4 - (base64.length % 4)
     const normalizedBase64 = padLength < 4 ? base64 + '='.repeat(padLength) : base64
     const payload = JSON.parse(window.atob(normalizedBase64)) as { exp?: number }
