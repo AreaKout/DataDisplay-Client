@@ -40,3 +40,7 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Node Version
+
+24.14.1
