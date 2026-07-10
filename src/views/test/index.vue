@@ -1,6 +1,9 @@
 <template>
   <section class="test-page">
     <h1>{{ message }}</h1>
+    <el-upload>
+      
+    </el-upload>
     <div class="actions">
       <RouterLink to="/test/report">去报表页</RouterLink>
       <RouterLink to="/unknown-path">测试 404 跳转</RouterLink>
